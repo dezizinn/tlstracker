@@ -6,15 +6,15 @@
 <title>TLS Workout Tracker</title>
 
 <!-- PWA manifest -->
-<link rel="manifest" href="/tlstracker/manifest.json">
+<link rel="manifest" href="manifest.json">
 
 <!-- iOS PWA support -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="TLS Tracker">
-<link rel="apple-touch-icon" href="/tlstracker/icon-180.png">
+<link rel="apple-touch-icon" href="icon-180.png">
 
-<!-- Theme color (colors Safari UI chrome) -->
+<!-- Theme color -->
 <meta name="theme-color" content="#7B3FA0">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap');
@@ -566,7 +566,7 @@ buildWorkout();
 // Register service worker for offline support
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/tlstracker/sw.js', { scope: '/tlstracker/' }).catch(() => {});
+    navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
   });
 }
 </script>
