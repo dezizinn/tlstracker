@@ -1,11 +1,11 @@
-const CACHE = 'tls-tracker-v2';
-const BASE = '/tlstracker';
+const CACHE = 'tls-tracker-v3';
 const ASSETS = [
-  BASE + '/index.html',
-  BASE + '/manifest.json',
-  BASE + '/icon-192.png',
-  BASE + '/icon-512.png',
-  BASE + '/icon-180.png',
+  './',
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png',
+  './icon-180.png',
 ];
 
 self.addEventListener('install', e => {
@@ -27,7 +27,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // Let Google Fonts go network-first, fall back to cache
+  // Network-first for Google Fonts
   if (url.hostname.includes('fonts.g')) {
     e.respondWith(
       fetch(e.request)
