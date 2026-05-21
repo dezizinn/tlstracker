@@ -2,20 +2,21 @@
   "name": "TLS Workout Tracker",
   "short_name": "TLS Tracker",
   "description": "Thinner Leaner Stronger — gym & home workout tracker",
-  "start_url": "/index.html",
+  "start_url": "/tlstracker/index.html",
+  "scope": "/tlstracker/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#0f0f13",
   "theme_color": "#7B3FA0",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/tlstracker/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "/tlstracker/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
