@@ -144,6 +144,11 @@
   /* Views */
   .view { display: none; }
   .view.active { display: block; }
+
+  /* Video button */
+  .vid-btn { display: inline-flex; align-items: center; gap: 5px; margin: 0 16px 12px; padding: 7px 13px; border-radius: 10px; border: 1px solid rgba(255,59,59,.3); background: rgba(255,59,59,.08); color: #ff6b6b; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all .15s; }
+  .vid-btn:active { transform: scale(.97); background: rgba(255,59,59,.18); }
+  .vid-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -201,86 +206,86 @@
 const GYM_DAYS = [
   { id:'d1', label:'Day 1', title:'Day 1 — Push', sub:'Chest Focus', color:'purple',
     exercises:[
-      {name:'Barbell bench press',        target:'3×4–6',  sets:3, heavy:true},
-      {name:'Incline barbell bench press',target:'3×4–6',  sets:3, heavy:true},
-      {name:'Dumbbell bench press',       target:'3×8–10', sets:3, heavy:false},
-      {name:'Triceps pushdown',           target:'3×8–10', sets:3, heavy:false},
-      {name:'Overhead triceps extension', target:'2×8–10', sets:2, heavy:false},
+      {name:'Barbell bench press',        target:'3×4–6',  sets:3, heavy:true,  vid:'4Y2ZdHCOXok'},
+      {name:'Incline barbell bench press',target:'3×4–6',  sets:3, heavy:true,  vid:'5kyLUGVq_pk'},
+      {name:'Dumbbell bench press',       target:'3×8–10', sets:3, heavy:false, vid:'QsYre885NNM'},
+      {name:'Triceps pushdown',           target:'3×8–10', sets:3, heavy:false, vid:'_w-HpW70nSQ'},
+      {name:'Overhead triceps extension', target:'2×8–10', sets:2, heavy:false, vid:'YbX7Wd8jQ-Q'},
     ]},
   { id:'d2', label:'Day 2', title:'Day 2 — Pull', sub:'Back Focus', color:'green',
     exercises:[
-      {name:'Barbell deadlift',  target:'3×4–6',  sets:3, heavy:true},
-      {name:'Barbell row',       target:'3×4–6',  sets:3, heavy:true},
-      {name:'Lat pulldown',      target:'3×8–10', sets:3, heavy:false},
-      {name:'Seated cable row',  target:'3×8–10', sets:3, heavy:false},
-      {name:'Dumbbell curl',     target:'3×8–10', sets:3, heavy:false},
+      {name:'Barbell deadlift',  target:'3×4–6',  sets:3, heavy:true,  vid:'8np3vKDBJfc'},
+      {name:'Barbell row',       target:'3×4–6',  sets:3, heavy:true,  vid:'bux0s6KFyAE'},
+      {name:'Lat pulldown',      target:'3×8–10', sets:3, heavy:false, vid:'CAwf7n6Luuc'},
+      {name:'Seated cable row',  target:'3×8–10', sets:3, heavy:false, vid:'7BkgqzC6WsM'},
+      {name:'Dumbbell curl',     target:'3×8–10', sets:3, heavy:false, vid:'ykJmrZ5v0Oo'},
     ]},
   { id:'d3', label:'Day 3', title:'Day 3 — Legs', sub:'Squat Focus', color:'amber',
     exercises:[
-      {name:'Barbell squat',     target:'3×4–6',  sets:3, heavy:true},
-      {name:'Romanian deadlift', target:'3×4–6',  sets:3, heavy:true},
-      {name:'Leg press',         target:'3×8–10', sets:3, heavy:false},
-      {name:'Leg curl',          target:'3×8–10', sets:3, heavy:false},
-      {name:'Calf raise',        target:'4×8–10', sets:4, heavy:false},
+      {name:'Barbell squat',     target:'3×4–6',  sets:3, heavy:true,  vid:'gcNh17Ckjgg'},
+      {name:'Romanian deadlift', target:'3×4–6',  sets:3, heavy:true,  vid:'uhghy9pFIPY'},
+      {name:'Leg press',         target:'3×8–10', sets:3, heavy:false, vid:'GvDTCQqQDUM'},
+      {name:'Leg curl',          target:'3×8–10', sets:3, heavy:false, vid:'P7-RxTVe6O0'},
+      {name:'Calf raise',        target:'4×8–10', sets:4, heavy:false, vid:'gwLzBJYoWlQ'},
     ]},
   { id:'d5', label:'Day 5', title:'Day 5 — Push', sub:'Shoulder Focus', color:'purple',
     exercises:[
-      {name:'Seated dumbbell press',     target:'3×4–6',  sets:3, heavy:true},
-      {name:'Side lateral raise',        target:'3×8–10', sets:3, heavy:false},
-      {name:'Bent-over rear delt raise', target:'3×8–10', sets:3, heavy:false},
-      {name:'Triceps pushdown',          target:'3×8–10', sets:3, heavy:false},
-      {name:'Overhead triceps extension',target:'2×8–10', sets:2, heavy:false},
+      {name:'Seated dumbbell press',     target:'3×4–6',  sets:3, heavy:true,  vid:'qEwKCR5JCog'},
+      {name:'Side lateral raise',        target:'3×8–10', sets:3, heavy:false, vid:'3VcKaXpzqRo'},
+      {name:'Bent-over rear delt raise', target:'3×8–10', sets:3, heavy:false, vid:'l7y9jIKD1Ls'},
+      {name:'Triceps pushdown',          target:'3×8–10', sets:3, heavy:false, vid:'_w-HpW70nSQ'},
+      {name:'Overhead triceps extension',target:'2×8–10', sets:2, heavy:false, vid:'YbX7Wd8jQ-Q'},
     ]},
   { id:'d6', label:'Day 6', title:'Day 6 — Upper', sub:'Arms Focus', color:'blue',
     exercises:[
-      {name:'Incline dumbbell curl',      target:'3×8–10',  sets:3, heavy:false},
-      {name:'Hammer curl',                target:'3×8–10',  sets:3, heavy:false},
-      {name:'Triceps pushdown',           target:'3×8–10',  sets:3, heavy:false},
-      {name:'Overhead triceps extension', target:'3×8–10',  sets:3, heavy:false},
-      {name:'Face pull',                  target:'3×10–12', sets:3, heavy:false},
+      {name:'Incline dumbbell curl',      target:'3×8–10',  sets:3, heavy:false, vid:'kfetl1P4vB0'},
+      {name:'Hammer curl',                target:'3×8–10',  sets:3, heavy:false, vid:'zC3nLlEvin4'},
+      {name:'Triceps pushdown',           target:'3×8–10',  sets:3, heavy:false, vid:'_w-HpW70nSQ'},
+      {name:'Overhead triceps extension', target:'3×8–10',  sets:3, heavy:false, vid:'YbX7Wd8jQ-Q'},
+      {name:'Face pull',                  target:'3×10–12', sets:3, heavy:false, vid:'ljgqer1ZpXg'},
     ]},
 ];
 
 const HOME_DAYS = [
   { id:'d1', label:'Day 1', title:'Day 1 — Push', sub:'Chest Focus · Home', color:'purple',
     exercises:[
-      {name:'DB Floor Press',              target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Elbows 45° from body; pause at bottom'},
-      {name:'Incline DB Press',            target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Prop torso ~30° on pillows or a chair'},
-      {name:'Push-Up (weighted/feet-up)',  target:'3×10–15',sets:3, heavy:false, eq:'BW',   tip:'Slow 3-sec descent; add backpack for load'},
-      {name:'Band Triceps Pushdown',       target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor band overhead; keep elbows locked in'},
-      {name:'DB Triceps Kickback',         target:'2×12–15',sets:2, heavy:false, eq:'DB',   tip:'Hinge at hips; upper arm parallel to floor'},
+      {name:'DB Floor Press',              target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Elbows 45° from body; pause at bottom',               vid:'QsYre885NNM'},
+      {name:'Incline DB Press',            target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Prop torso ~30° on pillows or a chair',               vid:'5kyLUGVq_pk'},
+      {name:'Push-Up (weighted/feet-up)',  target:'3×10–15',sets:3, heavy:false, eq:'BW',   tip:'Slow 3-sec descent; add backpack for load',           vid:'IODxDxX7oi4'},
+      {name:'Band Triceps Pushdown',       target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor band overhead; keep elbows locked in',         vid:'d-ySLTHUgQA'},
+      {name:'DB Triceps Kickback',         target:'2×12–15',sets:2, heavy:false, eq:'DB',   tip:'Hinge at hips; upper arm parallel to floor',          vid:'6Se3dgGKqBI'},
     ]},
   { id:'d2', label:'Day 2', title:'Day 2 — Pull', sub:'Back Focus · Home', color:'green',
     exercises:[
-      {name:'DB Romanian Deadlift', target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Hip hinge, soft knee; feel the hamstring stretch'},
-      {name:'DB Bent-Over Row',     target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Chest parallel to floor; pull to hip not chest'},
-      {name:'Band Lat Pulldown',    target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor above; pull elbows down and back'},
-      {name:'Band Seated Row',      target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Wrap around feet; pull to navel, squeeze back'},
-      {name:'DB Hammer Curl',       target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Neutral grip; controlled 2-sec lower'},
+      {name:'DB Romanian Deadlift', target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Hip hinge, soft knee; feel the hamstring stretch', vid:'hQgFixeXdZo'},
+      {name:'DB Bent-Over Row',     target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Chest parallel to floor; pull to hip not chest',  vid:'FWJR5Ve8iqg'},
+      {name:'Band Lat Pulldown',    target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor above; pull elbows down and back',          vid:'o5bXFrdw5iI'},
+      {name:'Band Seated Row',      target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Wrap around feet; pull to navel, squeeze back',    vid:'eItdYA8i5ec'},
+      {name:'DB Hammer Curl',       target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Neutral grip; controlled 2-sec lower',             vid:'zC3nLlEvin4'},
     ]},
   { id:'d3', label:'Day 3', title:'Day 3 — Legs', sub:'Squat Focus · Home', color:'amber',
     exercises:[
-      {name:'DB Goblet Squat',          target:'3×10–12',sets:3, heavy:true,  eq:'DB',   tip:'Hold DB at chest; squat deep, knees out'},
-      {name:'DB Romanian Deadlift',     target:'3×10–12',sets:3, heavy:true,  eq:'DB',   tip:'Slow descent; drive through heels'},
-      {name:'DB Bulgarian Split Squat', target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Rear foot elevated; front shin vertical'},
-      {name:'Band Leg Curl (prone)',    target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor band low; curl heels toward glutes'},
-      {name:'Single-Leg Calf Raise',   target:'4×15–20',sets:4, heavy:false, eq:'BW',   tip:'Stand on step edge; full range of motion'},
+      {name:'DB Goblet Squat',          target:'3×10–12',sets:3, heavy:true,  eq:'DB',   tip:'Hold DB at chest; squat deep, knees out',          vid:'CkFzgR55gho'},
+      {name:'DB Romanian Deadlift',     target:'3×10–12',sets:3, heavy:true,  eq:'DB',   tip:'Slow descent; drive through heels',                vid:'hQgFixeXdZo'},
+      {name:'DB Bulgarian Split Squat', target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Rear foot elevated; front shin vertical',          vid:'-4LVK1crLSw'},
+      {name:'Band Leg Curl (prone)',    target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor band low; curl heels toward glutes',        vid:'P7-RxTVe6O0'},
+      {name:'Single-Leg Calf Raise',   target:'4×15–20',sets:4, heavy:false, eq:'BW',   tip:'Stand on step edge; full range of motion',         vid:'gwLzBJYoWlQ'},
     ]},
   { id:'d5', label:'Day 5', title:'Day 5 — Push', sub:'Shoulder Focus · Home', color:'purple',
     exercises:[
-      {name:'DB Seated Overhead Press',    target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Sit upright; press straight overhead'},
-      {name:'DB Lateral Raise',            target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Slight elbow bend; lead with pinky side up'},
-      {name:'Band Face Pull',              target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor at face height; pull to ears, elbows high'},
-      {name:'DB Triceps Overhead Ext.',    target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Both hands on one DB; keep elbows tucked'},
-      {name:'Pike Push-Up',               target:'2×10–12',sets:2, heavy:false, eq:'BW',   tip:'Hips high, head toward floor; shoulder-dominant'},
+      {name:'DB Seated Overhead Press',    target:'3×8–10', sets:3, heavy:true,  eq:'DB',   tip:'Sit upright; press straight overhead',             vid:'qEwKCR5JCog'},
+      {name:'DB Lateral Raise',            target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Slight elbow bend; lead with pinky side up',      vid:'3VcKaXpzqRo'},
+      {name:'Band Face Pull',              target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Anchor at face height; pull to ears, elbows high', vid:'g9sehH0vp9U'},
+      {name:'DB Triceps Overhead Ext.',    target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Both hands on one DB; keep elbows tucked',        vid:'YbX7Wd8jQ-Q'},
+      {name:'Pike Push-Up',               target:'2×10–12',sets:2, heavy:false, eq:'BW',   tip:'Hips high, head toward floor; shoulder-dominant',  vid:'x7_I5SO0Uw8'},
     ]},
   { id:'d6', label:'Day 6', title:'Day 6 — Upper', sub:'Arms Focus · Home', color:'blue',
     exercises:[
-      {name:'Incline DB Curl',           target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Full stretch at bottom; controlled tempo'},
-      {name:'DB Hammer Curl',            target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Neutral grip; alternate or bilateral'},
-      {name:'Band Biceps Curl',          target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Stand on band; squeeze at top'},
-      {name:'DB Triceps Kickback',       target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Both arms; upper arm pinned to side'},
-      {name:'Band Rear Delt Pull-Apart', target:'3×15',   sets:3, heavy:false, eq:'BAND', tip:'Arms at shoulder height; pull band wide apart'},
+      {name:'Incline DB Curl',           target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Full stretch at bottom; controlled tempo',    vid:'kfetl1P4vB0'},
+      {name:'DB Hammer Curl',            target:'3×10–12',sets:3, heavy:false, eq:'DB',   tip:'Neutral grip; alternate or bilateral',         vid:'zC3nLlEvin4'},
+      {name:'Band Biceps Curl',          target:'3×12–15',sets:3, heavy:false, eq:'BAND', tip:'Stand on band; squeeze at top',               vid:'L8tSp2yOHY0'},
+      {name:'DB Triceps Kickback',       target:'3×12–15',sets:3, heavy:false, eq:'DB',   tip:'Both arms; upper arm pinned to side',          vid:'6Se3dgGKqBI'},
+      {name:'Band Rear Delt Pull-Apart', target:'3×15',   sets:3, heavy:false, eq:'BAND', tip:'Arms at shoulder height; pull band wide apart', vid:'L__jKMFFMTg'},
     ]},
 ];
 
@@ -378,6 +383,7 @@ function buildWorkout() {
           </div>
         </div>
         ${isHome && ex.tip ? `<div class="ex-tip">💡 ${ex.tip}</div>` : ''}
+        ${ex.vid ? `<a class="vid-btn" href="https://www.youtube.com/watch?v=${ex.vid}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 5 12 5 12 5s-6 0-7.7.3A2.7 2.7 0 0 0 2.4 7.2 28 28 0 0 0 2 12a28 28 0 0 0 .4 4.8 2.7 2.7 0 0 0 1.9 1.9C6 19 12 19 12 19s6 0 7.7-.3a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 22 12a28 28 0 0 0-.4-4.8zM10 15V9l5.2 3-5.2 3z"/></svg>Watch tutorial</a>` : ''}
         <div class="sets-table">
           <div class="sets-header">
             <div style="text-align:center">Set</div>
